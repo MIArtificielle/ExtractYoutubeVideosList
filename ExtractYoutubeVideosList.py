@@ -11,6 +11,11 @@ playlist_url = 'https://www.youtube.com/@Antoine_Peytavin_Officiel/videos'
 with yt_dlp.YoutubeDL() as ydl:
     playlist_info = ydl.extract_info(playlist_url, download=False)
 
+# Extraire uniquement les URL des vidéos de la playlist
+video_urls = [entry['webpage_url'] for entry in playlist_info['entries']]
+
 # Ecrit la liste dans le fichier qui poste son nom
-open(f"{playlist_info['title']}.txt", "w", encoding="utf-8") as file:
- file.write(f"{playlist_info['entries']]}")
+with open(f"{playlist_info['title']}.txt", "w", encoding="utf-8") as file:
+    for url in video_urls:
+        file.write(f"{url}\n")
+
