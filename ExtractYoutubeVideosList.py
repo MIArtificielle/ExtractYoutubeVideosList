@@ -18,7 +18,7 @@ video_urls = [entry['webpage_url'] for entry in playlist_info['entries']]
 os.makedirs(playlist_info['title'], exist_ok=True)
 
 # Ecrit la liste dans le fichier qui poste son nom
-with open(f"./{playlist_info['title']}/{playlist_info['title']}.txt", "w", encoding="utf-8") as file:
+with open(f"./{playlist_info['title']}/url.lst", "w", encoding="utf-8") as file:
     for url in video_urls:
         file.write(f"{url}\n")
 
